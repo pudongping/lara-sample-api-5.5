@@ -5,8 +5,12 @@ namespace App\Http\Controllers\Auth;
 use App\Models\Auth\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use App\Support\GValue;
+use App\Models\Code;
+use App\Http\Requests\Auth\UserRequest;
+use App\Repositories\Auth\UserRepository;
 
-class RegisterController extends Controller
+class UserController extends Controller
 {
 
     /**
@@ -16,13 +20,18 @@ class RegisterController extends Controller
      */
     protected $redirectTo = '/home';
 
+    protected $userRepository;
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(UserRepository $userRepository)
     {
+
+        $this->userRepository = $userRepository;
+
 //        $this->middleware('guest');
     }
 
@@ -55,4 +64,28 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    public function getTest(Request $request){
+        $validated = $request->validated();
+        dump($validated);die;
+        Code::setCode(Code::ERR_PARAMS,null,['5']);
+        dump(Code::getCode());
+    }
+
+    public function getMenu(){
+        return GValue::$controller;
+    }
+
+
+    public function getList(){
+
+    }
+
+    public function postAdd(UserRequest $userRequest){
+        dump($userRequest);
+
+    }
+
+
+
 }

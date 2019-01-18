@@ -1,3 +1,4 @@
+
 <?php
 
 return [
@@ -65,7 +66,8 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+//    'timezone' => 'UTC',
+    'timezone' => env('TIMEZONE','Asia/Shanghai'),
 
     /*
     |--------------------------------------------------------------------------
@@ -121,7 +123,9 @@ return [
     |
     */
 
-    'log' => env('APP_LOG', 'single'),
+//    'log' => env('APP_LOG', 'single'),
+    'log' => env('APP_LOG', 'daily'),
+    'log_max_files' => 30,
 
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
 
@@ -137,6 +141,10 @@ return [
     */
 
     'providers' => [
+        // 助手函数包
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+
+
 
         /*
          * Laravel Framework Service Providers...
