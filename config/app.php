@@ -143,7 +143,8 @@ return [
     'providers' => [
         // 助手函数包
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-
+        // transformer 包
+        Cyvelnet\Laravel5Fractal\Laravel5FractalServiceProvider::class,
 
 
         /*
@@ -234,6 +235,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'Fractal' => Cyvelnet\Laravel5Fractal\Facades\Fractal::class,
     ],
 
 ];

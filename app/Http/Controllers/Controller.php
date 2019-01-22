@@ -20,7 +20,8 @@ class Controller extends BaseController
     public function init(Request $request){
         $this->response = new Response();
         if(false === GValue::$ajax && 'GET' === GValue::$httpMethod){
-            //
+            $this->response->setMenu();
+            $this->response->setUser();
         }
     }
 

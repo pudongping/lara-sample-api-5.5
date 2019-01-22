@@ -38,17 +38,19 @@ class UserRequest extends Request
     {
         $rules = [
             'postAdd' => [
-                'name' => 'required|string|max:255',
-//                'name' => 'required|string|max:255|unique:users',
-//                'phone' => 'required|string|size:11|unique:users',
+                'name' => 'required|string|max:255|unique:users',
+                'phone' => 'required|string|size:11|unique:users',
 //                'identity_id' => 'required|int|exists:users_identities,id',
-//                'email' => 'required|string|email|max:255|unique:users',
-//                'password' => [
-//                    'required',
-//                    'string',
-//                    'min:8',
-//                    'regex:/^(?![A-Z]+$)(?![a-z]+$)(?!\d+$)(?![\W_]+$)\S{8,32}$/i',
-//                ],
+                'email' => 'required|string|email|max:255|unique:users',
+                'password' => [
+                    'required',
+                    'string',
+                    'min:8',
+                    'regex:/^(?![A-Z]+$)(?![a-z]+$)(?!\d+$)(?![\W_]+$)\S{8,32}$/i',
+                ],
+            ],
+            'getEdit' => [
+                'id' => 'required|integer|min:1'
             ],
         ];
 

@@ -44,7 +44,3 @@ Route::group(['prefix' => 'page'], function(){
         return commonRoute('page', $module, $controller, 'post'.ucfirst($action));
     });
 });
-
-
-
-Route::get('testgetmenu', 'Auth\UserController@getMenu');

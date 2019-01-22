@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\Auth\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
-use App\Support\GValue;
-use App\Models\Code;
-use App\Http\Requests\Auth\UserRequest;
 use App\Repositories\Auth\UserRepository;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\Auth\UserRequest;
+use App\Models\Code;
+use App\Exceptions\ApiException;
 
 class UserController extends Controller
 {
@@ -65,26 +65,42 @@ class UserController extends Controller
         ]);
     }
 
-    public function getTest(Request $request){
-        $validated = $request->validated();
-        dump($validated);die;
-        Code::setCode(Code::ERR_PARAMS,null,['5']);
-        dump(Code::getCode());
+    /**
+     * 用户列表（显示transformer全部字段）
+     *
+     * @param UserRequest $request
+     * @return mixed
+     */
+    public function getList(UserRequest $request){
+        $data = $this->userRepository->getList($request);
+        return $this->response->send($data);
     }
 
-    public function getMenu(){
-        return GValue::$controller;
+    /**
+     * 新增用户
+     *
+     * @param UserRequest $request
+     * @return mixed
+     * @throws ApiException
+     */
+    public function postAdd(UserRequest $request){
+        $data = $this->userRepository->postAdd($request);
+        return $this->response->send($data);
+    }
+
+    /**
+     * 编辑用户显示页面（只显示用户的id、name字段）
+     *
+     * @param UserRequest $request
+     * @return mixed
+     */
+    public function getEdit(UserRequest $request){
+        $item = $this->userRepository->getEdit($request);
+        return $this->response->send($item,['id','name']);
     }
 
 
-    public function getList(){
 
-    }
-
-    public function postAdd(UserRequest $userRequest){
-        dump($userRequest);
-
-    }
 
 
 

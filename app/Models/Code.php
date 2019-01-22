@@ -33,6 +33,11 @@ class Code{
     const ERR_PERM = 1007;
     const ERR_EXCEL_COLUMN = 1008;
 
+    /**
+     * 10000 系统设置
+     */
+    const ERR_MENU_FIELD = 10001;
+
 
     public static $msgs = [
         self::SUCC => '操作成功',
@@ -50,6 +55,8 @@ class Code{
         self::ERR_COMPANY_NAME => '错误的公司名称',
         self::ERR_PERM => '没有该操作权限，请联系管理员',
         self::ERR_EXCEL_COLUMN => 'Excel文件列数异常',
+
+        self::ERR_MENU_FIELD => '该菜单存在子菜单，无法删除',
     ];
 
     /**

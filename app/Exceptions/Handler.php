@@ -4,6 +4,13 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Database\QueryException;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Auth\AuthenticationException;
+use App\Models\Code;
+use App\Support\Response;
+use App\Support\GValue;
 
 class Handler extends ExceptionHandler
 {
@@ -48,6 +55,38 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
+        if(config('app.debug') && 1 == $request->input('raw')){
+            return parent::render($request, $exception); // validtion的异常会跳转302,raw会把错误输出
+        }
+
+        $response = new Response();
+        if($exception instanceof QueryException){
+            Code::setCode(Code::ERR_QUERY);
+        }
+        elseif ($exception instanceof \PDOException){
+            Code::setCode(Code::ERR_DB);
+        }
+        elseif ($exception instanceof ModelNotFoundException){
+            Code::setCode(Code::ERR_MODEL);
+        }
+        elseif ($exception instanceof ValidationException){
+            Code::setDetail($exception->errors());
+            Code::setCode(Code::ERR_PARAMS, null, array_values($exception->errors())[0]);
+        }
+        elseif ($exception instanceof AuthenticationException){
+            Code::setCode(Code::ERR_HTTP_UNAUTHORIZED);
+        }
+        elseif ($exception instanceof ApiException){
+
+        }
+        else{
+            $ret = parent::render($request, $exception);
+            $code = $ret->getStatusCode();
+            Code::setCode($code);
+        }
+
+        $response->setException($exception);
+        return $response->send();
+
     }
 }
