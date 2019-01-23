@@ -37,6 +37,7 @@ class Code{
      * 10000 系统设置
      */
     const ERR_MENU_FIELD = 10001;
+    const ERR_EXPORT = 10002;
 
 
     public static $msgs = [
@@ -57,6 +58,7 @@ class Code{
         self::ERR_EXCEL_COLUMN => 'Excel文件列数异常',
 
         self::ERR_MENU_FIELD => '该菜单存在子菜单，无法删除',
+        self::ERR_EXPORT => '导出文件失败，请联系管理员',
     ];
 
     /**

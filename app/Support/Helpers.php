@@ -13,3 +13,12 @@ if(!function_exists('isMobile')){
         return preg_match('/^1[34578]\d{9}$/', $mobile) ? true : false;
     }
 }
+
+if(!function_exists('checkCreateDir')) {
+    function checkCreateDir($dir) {
+        if(!is_dir($dir)) {
+            return @mkdir($dir, 0777, true);
+        }
+        return true;
+    }
+}
