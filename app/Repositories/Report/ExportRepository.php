@@ -19,6 +19,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 class ExportRepository extends BaseRepository{
 
     const PATH = 'app/export';
+    const ZIPFILE = '打包文件.zip';
 
     public function __construct()
     {
@@ -57,7 +58,33 @@ class ExportRepository extends BaseRepository{
         return $path . $fileName;
     }
 
+    /**
+     * zip 打包
+     *
+     * @param $path
+     * @param string $zipFileName
+     * @throws ApiException
+     */
+    protected function zip($path,$zipFileName='') {
+//        $path = base_path() . '/public/test/';
 
+        $zipFileName = $zipFileName ? $zipFileName : self::ZIPFILE;
+        $zipfile = $path.$zipFileName;
+        $zip = new \ZipArchive;
+        if ($zip->open($zipfile,\ZipArchive::CREATE |\ZipArchive::OVERWRITE ) === TRUE) {
+            foreach(glob($path . '*') as $file) {
+                if($file === $zipfile) {
+                    continue;
+                }
+                $zip->addFile($file, ltrim($file, $path));
+            }
+            $zip->close();
+        }
+        else {
+            Log::error("can not zip file: $zipfile");
+            throw new ApiException(Code::ERR_EXPORT);
+        }
+    }
 
 
 }
