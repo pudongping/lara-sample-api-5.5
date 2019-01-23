@@ -38,6 +38,7 @@ class Code{
      */
     const ERR_MENU_FIELD = 10001;
     const ERR_EXPORT = 10002;
+    const ERR_QRCODE = 10003;
 
 
     public static $msgs = [
@@ -59,6 +60,7 @@ class Code{
 
         self::ERR_MENU_FIELD => '该菜单存在子菜单，无法删除',
         self::ERR_EXPORT => '导出文件失败，请联系管理员',
+        self::ERR_QRCODE => '二维码生成错误',
     ];
 
     /**

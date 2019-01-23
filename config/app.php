@@ -145,7 +145,8 @@ return [
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         // transformer 包
         Cyvelnet\Laravel5Fractal\Laravel5FractalServiceProvider::class,
-
+        // 二维码包
+        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
 
         /*
          * Laravel Framework Service Providers...
@@ -236,6 +237,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Fractal' => Cyvelnet\Laravel5Fractal\Facades\Fractal::class,
+        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class
     ],
 
 ];

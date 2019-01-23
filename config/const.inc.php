@@ -7,5 +7,11 @@ class ConstInc{
      */
     const PAGE_NUM = 20;
 
+    /**
+     * 二维码相关
+     */
+    const QRSIZE = 150;
+    const QR_PATH = 'app/qr/';
+
 
 }
