@@ -33,7 +33,7 @@ abstract class BaseRepository{
      * @return mixed 数据集
      */
     protected function usePage($model, $sortColumn = 'id', $sort = 'desc'){
-        $number = GValue::$perPage > 0 ?: \ConstInc::PAGE_NUM;
+        $number = GValue::$perPage > 0 ? GValue::$perPage : \ConstInc::PAGE_NUM;
 
         if(!empty(GValue::$orderBy)){
             // 支持 GValue::$orderBy = id,desc|name,asc
