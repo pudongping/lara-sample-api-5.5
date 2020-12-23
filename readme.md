@@ -1,58 +1,15 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# 关于此项目
+这个项目主要是基于 laravel5.5 做的一些基础架构封装，封装了一些常用的基础方法，比如上传文件、用户的CRUD、后台管理菜单树形结构且对返回的数据结构做了统一封装  
+使得前端所需要的数据结构保持了一致性。
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## laravel 已经很优秀了，为什么还要做一些基础封装 ？
+laravel 的优秀，确实是毋容置疑的，但是我们还需要针对我们的业务场景对 laravel 做一些简单的封装，便于统一返回给前端的数据结构。这样，不管有多少个团队成员参与开发，我们都能够做到给到前端的数据结构一致，保持了代码的整洁性和规范性。 总之优点还是很多很多的，废话就不多说了，show me your code ！ 直接看代码吧！小老弟！
 
-## About Laravel
+## 万一不会用，咋办？
+本人代码仓库下的 `lara-sample-api` 项目是基于 `laravel6.x` 做的类似封装，完全可以借鉴此用法，且本人代码仓库下的 `lara-shop-api` （商城门户代码） 和 `lara-shop-cms` （商城后台管理代码）均使用类似的基础架构，完全可以参考。  
+如果确实还是不知道咋使用，欢迎随时找我唠叨，学海无涯，大家一起成长！
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+## 注意
+目前由于 laravel 框架更新迭代太快，此项目已经不打算更新新功能，只接受 bug 修复。但此项目的骨架功能依然是完整的，且值得一定推敲的，欢迎使用！    
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
-
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell):
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Pulse Storm](http://www.pulsestorm.net/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**目前只会考虑不断的去跟着最新的 laravel lts 版本去封装基础骨架，不会跟着最新版本去封装。**
